@@ -9,12 +9,12 @@ namespace WebApplication1.Controllers
     [ApiController]
     [Route("api/[controller]/[Action]")]
 
-    public class WeatherForecastController : ControllerBase
+    public class AuthorController : ControllerBase
     {
         private readonly IAuthorService _authorService;
 
 
-        public WeatherForecastController(IAuthorService authorService)
+        public AuthorController(IAuthorService authorService)
         {
             _authorService = authorService;
         }
