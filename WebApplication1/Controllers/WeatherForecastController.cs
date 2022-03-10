@@ -32,37 +32,19 @@ namespace WebApplication1.Controllers
             var result = _authorService.AddAuthor(authorDto);
             return Ok(result);
         }
-        /*
-          [HttpGet()]
-          public IEnumerable<Book> GetBooks()
-          {
-              var list = _bookStoreDbContext.Books.ToList();
-              return list;
-          }
 
-          [HttpPost]
-          public IActionResult AddBook([FromBody] BookDto bookDto)
-          {
-              var author = new Book();
-              author.Name = bookDto.Name;
-              _bookStoreDbContext.Books.Add(author);
-              _bookStoreDbContext.SaveChanges();
-              return Ok(author);
-          }
+        [HttpPost]
+        public IActionResult UpdateAuthor([FromBody] AuthorParameter authorDto)
+        {
+            var result = _authorService.UpdateAuthor(authorDto);
+            return Ok(result);
+        }
 
-          [HttpPost]
-          public IActionResult BookAuthor([FromBody] BookAuthorDto bookAuthorDto)
-          {
-              var autor = _bookStoreDbContext.Authors.FirstOrDefault(x => x.Id == bookAuthorDto.AuthorId);
-              if (autor != null)
-              {
-                  var book = _bookStoreDbContext.Books.FirstOrDefault(x => x.Id == bookAuthorDto.BookId);
-                  book.Author = autor;
-                  _bookStoreDbContext.Books.Update(book);
-                  _bookStoreDbContext.SaveChanges();
-              }
-              return Ok();
-          }
-          */
+        [HttpGet("{id}")]
+        public IActionResult UpdateAuthor(int id)
+        {
+            var result = _authorService.GetAuthorById(id);
+            return Ok(result);
+        }
     }
 }

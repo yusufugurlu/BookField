@@ -11,6 +11,8 @@ namespace Business.Abstract
     public interface IAuthorService
     {
         List<AuthorViewModel> GetAuthors();
+        AuthorViewModel GetAuthorById(int id);
         AuthorViewModel AddAuthor(AuthorParameter authorParameter);
+        AuthorViewModel UpdateAuthor(AuthorParameter authorParameter);
     }
 }

@@ -9,6 +9,7 @@ namespace ViewModel.Parameters
 {
     public class AuthorParameter
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public GenreEnum Genre { get; set; }
     }

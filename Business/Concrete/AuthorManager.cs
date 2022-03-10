@@ -35,6 +35,16 @@ namespace Business.Concrete
             return authorViewModel;
         }
 
+        public AuthorViewModel GetAuthorById(int id)
+        {
+            var AuthorViewModels = _bookStoreDbContext.Authors.Select(x => new AuthorViewModel
+            {
+                Genre = x.GenreId.ToString(),
+                Name = x.Name
+            }).FirstOrDefault();
+            return AuthorViewModels;
+        }
+
         public List<AuthorViewModel> GetAuthors()
         {
             var AuthorViewModels = _bookStoreDbContext.Authors.Select(x => new AuthorViewModel
@@ -43,6 +53,24 @@ namespace Business.Concrete
                 Name = x.Name
             }).ToList();
             return AuthorViewModels;
+        }
+
+        public AuthorViewModel UpdateAuthor(AuthorParameter authorParameter)
+        {
+            AuthorViewModel authorViewModel = new AuthorViewModel();
+
+            var author=  _bookStoreDbContext.Authors.FirstOrDefault(x => x.Id == authorParameter.Id);
+            if (author != null)
+            {
+                author.Name = authorParameter.Name;
+                author.GenreId = authorParameter.Genre;
+                _bookStoreDbContext.Authors.Update(author);
+                _bookStoreDbContext.SaveChanges();
+
+                authorViewModel.Name = authorParameter.Name;
+                authorViewModel.Genre = authorParameter.Genre.ToString();
+            }
+            return authorViewModel;
         }
     }
 }
