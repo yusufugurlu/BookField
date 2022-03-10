@@ -4,6 +4,8 @@ using DataAccess.Model;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using System.Reflection;
+
 namespace WebApplication1
 {
     public static class Startup
@@ -25,8 +27,15 @@ namespace WebApplication1
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddDbContext<BookStoreDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DebugConnection")));
+            #region AutoMaapper
+            builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            #endregion
 
+            #region Scope
             builder.Services.AddScoped<IAuthorService, AuthorManager>();
+            #endregion
+
+
 
         }
         private static void Configure(WebApplication app)
