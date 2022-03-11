@@ -16,6 +16,7 @@ namespace DataAccess.Configuration
         {
             //Otomatik olarak veri eklendiğinde GenreId Deriveded eşit olan 1 yazacaktır.
             builder.Property(e => e.GenreId).HasDefaultValueSql(((int)GenreEnum.Deriveded).ToString());
+            builder.Property(c => c.CreateDate).HasDefaultValueSql("GETDATE()");
         }
     }
 }

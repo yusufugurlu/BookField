@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DataAccess.Configuration;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace DataAccess.Model
 {
     public class BookStoreDbContext : DbContext
     {
-        public BookStoreDbContext(DbContextOptions<BookStoreDbContext> options):base(options)
+        public BookStoreDbContext(DbContextOptions<BookStoreDbContext> options) : base(options)
         {
 
         }
@@ -18,6 +19,11 @@ namespace DataAccess.Model
             optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=BookDB;Integrated Security=True");
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //Configuration yaptığımız classları burada tanımlanır.
+            modelBuilder.ApplyConfiguration(new AuthorConfiguration());
+        }
         public DbSet<Book> Books { get; set; }
         public DbSet<Author> Authors { get; set; }
     }
