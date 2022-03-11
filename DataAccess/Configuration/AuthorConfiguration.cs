@@ -21,7 +21,6 @@ namespace DataAccess.Configuration
             builder.HasData(new Author()
             {
                 Name = "Admin",
-                CreateDate = DateTime.Now,
                 GenreId = GenreEnum.Deriveded,
                 Id=3
             });

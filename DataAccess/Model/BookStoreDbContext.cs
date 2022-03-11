@@ -23,6 +23,7 @@ namespace DataAccess.Model
         {
             //Configuration yaptığımız classları burada tanımlanır.
             modelBuilder.ApplyConfiguration(new AuthorConfiguration());
+            modelBuilder.ApplyConfiguration(new BookConfiguration());
         }
         public DbSet<Book> Books { get; set; }
         public DbSet<Author> Authors { get; set; }
