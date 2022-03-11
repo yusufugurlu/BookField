@@ -14,6 +14,7 @@ namespace DataAccess.Model
         public int Id { get; set; }
         public string Name { get; set; }
         public GenreEnum GenreId { get; set; }
+        public DateTime CreateDate { get; set; }
         public List<Book> Books { get; set; }
     }
 }
