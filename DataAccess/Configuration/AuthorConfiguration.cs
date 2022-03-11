@@ -25,6 +25,9 @@ namespace DataAccess.Configuration
                 GenreId = GenreEnum.Deriveded,
                 Id=3
             });
+
+            //property veri tipini berlirleme
+           // builder.Property(x => x.Name).HasColumnType("date");
         }
     }
 }
