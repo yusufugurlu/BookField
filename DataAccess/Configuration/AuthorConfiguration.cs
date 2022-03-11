@@ -26,7 +26,8 @@ namespace DataAccess.Configuration
             });
 
             //property veri tipini berlirleme
-           // builder.Property(x => x.Name).HasColumnType("date");
+            // builder.Property(x => x.Name).HasColumnType("date");
+            builder.HasIndex(x => x.Name).HasName("IX_NameBook");
         }
     }
 }
