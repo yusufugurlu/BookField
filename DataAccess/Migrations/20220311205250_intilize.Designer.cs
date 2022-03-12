@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(BookStoreDbContext))]
-    [Migration("20220311183203_AddSeedAuthorAdmin")]
-    partial class AddSeedAuthorAdmin
+    [Migration("20220311205250_intilize")]
+    partial class intilize
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -44,9 +44,12 @@ namespace DataAccess.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .HasDatabaseName("IX_NameBook");
 
                     b.ToTable("Authors");
 
@@ -54,7 +57,7 @@ namespace DataAccess.Migrations
                         new
                         {
                             Id = 3,
-                            CreateDate = new DateTime(2022, 3, 11, 21, 32, 3, 25, DateTimeKind.Local).AddTicks(5228),
+                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GenreId = 1,
                             Name = "Admin"
                         });
@@ -68,8 +71,12 @@ namespace DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("AuthorId")
+                    b.Property<int?>("AuthorId")
+                        .IsRequired()
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
                         .IsRequired()

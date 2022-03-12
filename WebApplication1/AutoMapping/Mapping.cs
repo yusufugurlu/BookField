@@ -26,6 +26,8 @@ namespace WebApplication1.AutoMapping
             //ReverseMap mapping işleminin iki yönlü olduğunu belirtir.
             CreateMap<Author, AuthorViewModel>().ReverseMap();
 
+            CreateMap<BookViewModel,Book >().ReverseMap();
+
         }
         
     }

@@ -16,7 +16,7 @@ namespace DataAccess.Model
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=BookDB;Integrated Security=True");
+            optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=Book2DB;Integrated Security=True");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
