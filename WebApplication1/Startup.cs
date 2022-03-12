@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using System.Globalization;
 using System.Reflection;
+using WebApplication1.Middlewares;
 
 namespace WebApplication1
 {
@@ -81,6 +82,9 @@ namespace WebApplication1
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.UseSample();
+            app.Run(async context => await context.Response.WriteAsync("Run middleware"));
 
             app.UseHttpsRedirection();
 
