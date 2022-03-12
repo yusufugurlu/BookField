@@ -43,21 +43,13 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public IActionResult AddBook([FromBody] BookViewModel authorDto)
         {
-            try
-            {
-                CreateBookCommand createBookCommand = new CreateBookCommand(_authorService);
-                createBookCommand.BookView = authorDto;
-                CreateBookValidator validator = new CreateBookValidator();
-                validator.ValidateAndThrow(authorDto);
-                var result = createBookCommand.Handle();
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
 
-                return BadRequest(ex.Message);
-            }
-            return Ok();
+            CreateBookCommand createBookCommand = new CreateBookCommand(_authorService);
+            createBookCommand.BookView = authorDto;
+            CreateBookValidator validator = new CreateBookValidator();
+            validator.ValidateAndThrow(authorDto);
+            var result = createBookCommand.Handle();
+            return Ok(result);
         }
 
         [HttpPost]

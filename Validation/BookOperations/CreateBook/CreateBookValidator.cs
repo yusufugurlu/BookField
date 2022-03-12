@@ -12,7 +12,8 @@ namespace Validation.BookOperations.CreateBook
     {
         public CreateBookValidator()
         {
-            RuleFor(x=>x.Name).NotEmpty().WithMessage("Ad alanı boş geçilemez.");
+            RuleFor(x=>x.Name).NotEmpty().MinimumLength(2).WithMessage("Ad alanı boş geçilemez.");
+            RuleFor(x => x.Id).GreaterThan(2);
         }
     }
 }

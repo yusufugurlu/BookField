@@ -84,7 +84,8 @@ namespace WebApplication1
             }
 
             app.UseSample();
-            app.Run(async context => await context.Response.WriteAsync("Run middleware"));
+            app.UseCustomException();
+            //app.Run(async context => await context.Response.WriteAsync("Run middleware"));
 
             app.UseHttpsRedirection();
 
