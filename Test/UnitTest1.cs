@@ -3,7 +3,7 @@ using Xunit;
 
 namespace Test
 {
-    public class UnitTest1
+ /*   public class UnitTest1
     {
         [Fact]
         public void FirstTest_WithoutFluent()
@@ -28,5 +28,6 @@ namespace Test
                 .And.StartWith("hel")
                 .And.EndWith("orld");
         }
-    }
+
+    }*/
 }

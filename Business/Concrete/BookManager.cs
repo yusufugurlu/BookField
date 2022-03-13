@@ -26,7 +26,10 @@ namespace Business.Concrete
         {
             _bookStoreDbContext.Database.EnsureCreated();
             var newBook = _mapper.Map<Book>(view);
-
+            if (_bookStoreDbContext.Books.Where(x => x.Name == view.Name).Any())
+            {
+                throw new InvalidCastException("Kitap zaten mevcut");
+            }
             _bookStoreDbContext.Books.Add(newBook);
             _bookStoreDbContext.SaveChanges();
             return view;
